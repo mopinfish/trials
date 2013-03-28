@@ -31,7 +31,7 @@
  */
 (function (name, module, definition) {
     module[name] = definition();
-})('define', globalModule, function () {
+})('class', globalModule, function () {
     var Class = function () {
         var Klass = function () {
             this.init.apply(this, arguments);
@@ -45,10 +45,26 @@
         // shortcut to self.
         Klass.fn.parent = klass;
 
-        // add class property method
+        // add class property
         Klass.extend = function (obj) {
+            merge(obj, Klass);
+        };
+
+        // add instance property
+        Klass.include = function (obj) {
+            merge(obj, Klass.fn);
+        };
 
         return Klass;
     };
+
+    function merge(properties, context) {
+        var key;
+        for (key in properties) {
+            if (properties.hasOwnProperty(key)) {
+                context[key] = properties[key];
+            }
+        }
+    }
     return Class;
 });
