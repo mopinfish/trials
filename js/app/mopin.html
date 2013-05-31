@@ -4,13 +4,44 @@
         <script type="text/javascript" src="../library/Namespace.js"></script>
         <script type="text/javascript" src="../mopin/core.js"></script>
         <script type="text/javascript">
-            Mopin.include({
+            Mopin.extend({
                 say: function () {
                     console.log('hogehoge');
                 }
             });
-            Mopin.say();
+            //Mopin.say();
+            var Person = Mopin.class();
+            Person.include({
+                init: function (name) {
+                    this.name = name;
+                }
+            }).extend({
+                hoge: function () {
+                    console.log('person hoge');
+                }
+            }).include({
+                say: function () {
+                    console.log('Hello ' + this.name);
+                }
+            });
+            var taro = new Person('taro');
+            // taro.say();
 
+            // Person.hoge();
+
+            var Student = Mopin.inheritence(Person);
+            var jiro = new Student('jiro');
+            //jiro.say();
+
+            var def = Mopin.define(function (name) {
+                this.name = name;
+            }).as('Mopin.app.Person');
+
+var goro = new Mopin.app.Person('goro');
+//console.log(goro);
+//goro.say();
+//            console.log(def);
+//            console.log(Mopin);
         </script>
     </head>
     <body>
