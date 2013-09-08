@@ -17,6 +17,17 @@ def tester():
   p = {}
   return render_template('tester.html', p = p)
 
+@app.route('/mopin')
+def mopin():
+  p = {}
+  return render_template('mopin.html', p = p)
+
+@app.route('/mopin/test')
+def mopinTest():
+  p = {}
+  return render_template('mopin-test.html', p = p)
+
+
 ### API ###
 @app.route('/api/get/time')
 def api_index():
