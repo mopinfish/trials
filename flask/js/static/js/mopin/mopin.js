@@ -26,14 +26,18 @@
 })('Class', Mopin, function () {
     var Class = function (Inheritance) {
         var klass = function () {
+                // 継承の実現
+                if (typeof Inheritance === 'function') {
+                    // 継承元クラスのプロパティにアクセスするためのショートカット
+                    this._super = createProxyObject(Inheritance.prototype, this);
+                }
+                // 初期化メソッド呼び出し
                 this.init.apply(this, arguments);
             };
 
         // 継承の実現
         if (typeof Inheritance === 'function') {
             klass.prototype = createObject(Inheritance.prototype);
-            // 継承元クラスのプロパティにアクセスするためのショートカット
-            klass.prototype._super = createObject(Inheritance.prototype);
         }
 
         // 初期化メソッド
@@ -92,11 +96,22 @@
         return new F();
     }
 
+    function proxy(func, context) {
+        return function () {
+            func.apply(context, arguments);
+        }
+    }
+
+    function createProxyObject(obj, context) {
+        var proxyObj = {},
+            prop;
+        for (prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                proxyObj[prop] = proxy(obj[prop], context);
+            }
+        }
+        return proxyObj;
+    }
+
     return Class;
 });
-
-(function (global, doc, $) {
-
-    var Class = function () {
-    };
-}(this, document, jQuery));

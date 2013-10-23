@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>江東区の小学校区</title>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&hl=ja"></script>
+<script type="text/javascript">
+    function initialize() {
+        var initPos = new google.maps.LatLng(35.66875602506463, 139.79899832833922),
+            myOptions = {
+                noClear : true,
+                center : initPos,
+                zoom : 14,
+                mapTypeId : google.maps.MapTypeId.ROADMAP
+            },
+            map_canvas = new google.maps.Map(document.getElementById("map_canvas"), myOptions),
+            kmlUrl = "http://www37364u.sakura.ne.jp/d3/static/data/koutou.kml",
+            kmlLayer = new google.maps.KmlLayer(kmlUrl, {preserveViewport:true});
+        kmlLayer.setMap(map_canvas);
+    }
+</script>
+</head>
+<body onload="initialize()">
+  江東区の小学校区（<a href="http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-A27.html">国土数値情報　小学校区データ</a>）
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+  
+ </body>
+</html>

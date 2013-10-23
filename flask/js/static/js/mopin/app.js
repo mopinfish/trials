@@ -15,10 +15,9 @@
     var taro = new Person('taro');
     var Student = Mopin.Class(Person);
     Student.include({
-        init: function () {
-            this._super.init.apply(this, arguments);
+        init: function (name) {
+            this._super.init(name);
         }
     });
     var jiro = new Student('jiro');
-    console.log(jiro.sayHello());
 }());
