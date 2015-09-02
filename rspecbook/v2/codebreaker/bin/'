@@ -9,62 +9,57 @@ module Codebreaker
       subject { target.exact_match_count }
 
       context 'with no matches' do
-        let(:guess) { '5555' }
+        let(:guess) { ' 5555' }
+
         it 'returns 0' do
           expect(subject).to eq 0
         end
       end
 
       context 'with 1 exact match' do
-        let(:guess) { '1555' }
+        let(:guess) { ' 1555' }
         it 'returns 1' do
           expect(subject).to eq 1
         end
       end
-
       context 'with 1 number match' do
-        let(:guess) { '2555' }
+        let(:guess) { ' 2555' }
         it 'returns 0' do
           expect(subject).to eq 0
         end
       end
-
       context 'with 1 exact match and 1 number match' do
-        let(:guess) { '1525' }
+        let(:guess) { ' 1525' }
         it 'returns 1' do
-          expect(subject).to eq 1
+          marker = Marker.new('1234', '1525')
+          marker.exact_match_count.should == 1
         end
       end
     end
 
     describe '#number_match_count' do
-      subject { target.number_match_count }
-
       context 'with no matches' do
-        let(:guess) { '5555' }
         it 'returns 0' do
-          expect(subject).to eq 0
+          marker = Marker.new('1234', '5555')
+          marker.number_match_count.should == 0
         end
       end
-
       context 'with 1 number match' do
-        let(:guess) { '2555' }
         it 'returns 1' do
-          expect(subject).to eq 1
+          marker = Marker.new('1234', '2555')
+          marker.number_match_count.should == 1
         end
       end
-
       context 'with 1 exact match' do
-        let(:guess) { '1555' }
         it 'returns 0' do
-          expect(subject).to eq 0
+          marker = Marker.new('1234', '1555')
+          marker.number_match_count.should == 0
         end
       end
-
       context 'with 1 exact match and 1 number match' do
-        let(:guess) { '1525' }
         it 'returns 1' do
-          expect(subject).to eq 1
+          marker = Marker.new('1234', '1525')
+          marker.number_match_count.should == 1
         end
       end
     end
