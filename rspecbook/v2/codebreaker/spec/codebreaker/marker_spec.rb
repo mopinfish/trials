@@ -67,6 +67,13 @@ module Codebreaker
           expect(subject).to eq 1
         end
       end
+
+      context 'with 1 exact match duplicated in guess' do
+        let(:guess) { '1155' }
+        it 'return 0' do
+          expect(subject).to eq 0
+        end
+      end
     end
   end
 end
