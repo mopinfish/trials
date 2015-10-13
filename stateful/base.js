@@ -14,7 +14,7 @@ var Class = function (parent) {
     // ショートカット
     klass.fn = klass.prototype;
     klass.fn.parent = klass;
-    klass._super = klass.__proto__;
+    klass._super = klass.prototype.__proto__;
 
     /* include/extend のコード... */
 
