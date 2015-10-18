@@ -1,0 +1,8 @@
+node_modules/
+npm-debug.log
+logs/*
+routes/**/*.js
+models/**/*.js
+public/javascripts/**/*.js
+sources/**/*.js
+app.js
