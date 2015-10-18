@@ -1,14 +1,14 @@
+import path from 'path';
 import express from 'express';
+import ect from 'ect';
+import routes from './routes/index';
+
 let app = express();
 
-class Animal {
-  constructor(name) {
-    this.name = name;
-  }
-  say() {
-    console.log('Hello! My name is ' + this.name);
-  }
-}
+app.engine('ect', ect({ watch: true, root: __dirname + '/views', ext: '.ect' }).render);
+app.set('view engine', 'ect');
 
-var animal = new Animal('noboru');
-animal.say();
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', routes);
+
+export default app

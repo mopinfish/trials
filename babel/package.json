@@ -16,6 +16,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "debug": "^2.2.0",
+    "ect": "^0.5.9",
     "express": "^4.13.3",
     "require-dir": "^0.3.0"
   }
