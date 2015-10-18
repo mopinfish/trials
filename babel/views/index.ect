@@ -1,1 +1,6 @@
-title= <%= @title %>
+<% extend 'layout' %>
+<h1>title= <%= @title %></h1>
+
+<% block 'javascript' : %>
+<script type="text/javascript" src="./javascripts/bundle.js"></script>
+<% end %>

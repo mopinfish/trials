@@ -3,7 +3,10 @@ module.exports = {
     list: ["babel", "browserify", "watch"]
   },
   watch: {
-    './app.es6': ['babel']
+    './app.es6': ['babel'],
+    "./routes/**/*.es6": ["babel"],
+    "./models/**/*.es6": ["babel"],
+    "./sources/javascripts/**/*.es6": ["browserify"]
   },
   browserify: {
     dest: "./public/javascripts/",
