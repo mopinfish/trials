@@ -1,0 +1,14 @@
+{
+  "name": "bable",
+  "version": "1.0.0",
+  "description": "bable trial",
+  "main": "output.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mopinfish",
+  "license": "ISC",
+  "devDependencies": {
+    "buble": "^0.8.5"
+  }
+}
